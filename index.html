@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>¡Feliz 3 Meses!</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <canvas id="canvasRayos"></canvas>
+
+    <audio id="musica" loop src="musi/locura.mp3"></audio>
+    <button id="btnMusica" class="btn-musica">🎵</button>
+
+    <div class="contenedor-texto">
+        <h1>¡Feliz 3 Meses, Mi Amor! 🤪❤️</h1>
+        <p class="fecha">3 meses creando nuestra historia</p>
+
+        <div class="contador">
+            <div class="unidad"><span id="meses" class="numero">0</span><small>Meses</small></div>
+            <div class="unidad"><span id="dias" class="numero">0</span><small>Días</small></div>
+            <div class="unidad"><span id="horas" class="numero">00</span><small>Horas</small></div>
+            <div class="unidad"><span id="minutos" class="numero">00</span><small>Min</small></div>
+            <div class="unidad"><span id="segundos" class="numero">00</span><small>Seg</small></div>
+        </div>
+    </div>
+
+    <canvas id="canvasCorazon"></canvas>
+
+    <canvas id="canvasToques"></canvas>
+
+    <div class="contenedor-inferior">
+        <button id="btnCarta" class="btn-carta">Leer mi carta 💌</button>
+    </div>
+
+    <div id="cartaAmor" class="carta-amor">
+        <div class="carta-contenido">
+            <h2>Para ti, mi amor 💙</h2>
+            <p>
+            Parece mentira lo rápido que vuela el tiempo desde que nos conocimos en la universidad. Llegaste a mi vida de una forma tan alocada, sincera y madura; por cada sonrisa, por cada abrazo y por hacer que estos tres meses a tu lado hayan sido tan geniales, que creo que nadie juzga por la manera rara de entendernos.<br><br>
+            Sé que a veces la distancia nos la pone difícil, y que las llamadas y los mensajes tienen que sostener las ganas de vernos mientras pasan los días. Pero justo por eso valoro tanto lo que tenemos: porque ni los kilómetros apagan lo bonito que estamos construyendo juntos.<br><br>
+            Gracias por estar siempre presente, por no olvidarme y por hacer que cada reencuentro en la “U” valga totalmente la pena. Me encanta tenerte en mi vida. ¡Por muchos meses más!<br><br>
+            <strong>Te quiero muchísimo mi princeso. 🤣👑</strong> <br>
+            <strong>Y gracias por leer mi testamento. 🥴</strong> </br>
+            </p>
+            <button id="cerrarCarta" class="cerrar-carta">Cerrar</button>
+        </div>
+    </div>
+
+    <script src="rayos.js"></script>
+    <script src="script.js"></script>
+    <script src="extras.js"></script>
+</body>
+</html>

@@ -1,0 +1,212 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Evita que la pantalla se mueva o haga scroll en celular */
+}
+
+body {
+    background-color: #020208;
+    color: #ffffff;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 100vh;
+    min-height: -webkit-fill-available; /* Para navegadores en iOS/Android */
+}
+
+#canvasRayos {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    pointer-events: none; /* que no interfiera con toques/clicks */
+}
+
+.contenedor-texto {
+    text-align: center;
+    position: relative;
+    top: 5vh; /* Se posiciona dinámicamente según la altura de la pantalla */
+    z-index: 10;
+    padding: 0 15px;
+    width: 100%;
+}
+
+h1 {
+    font-size: clamp(1.4rem, 5vw, 2.2rem); /* El texto cambia de tamaño automáticamente según la pantalla */
+    color: #00d2ff;
+    text-shadow: 0 0 12px #00d2ff, 0 0 25px #0072ff;
+    margin-bottom: 6px;
+    line-height: 1.2;
+}
+
+.fecha {
+    font-size: clamp(0.9rem, 3.5vw, 1.2rem);
+    color: #88d4ff;
+    letter-spacing: 1.5px;
+}
+
+#canvasCorazon {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    max-width: 100vw;
+    max-height: 70vh;
+}
+
+.btn-musica {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    z-index: 20;
+    background: rgba(0, 210, 255, 0.15);
+    border: 1px solid #00d2ff;
+    color: #ffffff;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 0 12px rgba(0, 210, 255, 0.4);
+}
+
+#canvasToques {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 5;
+    pointer-events: none; /* el toque lo detecta el <body>, esto solo dibuja */
+}
+
+/* ===== Contador en vivo ===== */
+.contador {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: clamp(8px, 3vw, 18px) clamp(10px, 4vw, 22px);
+    margin-top: 14px;
+}
+
+.contador .unidad {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 44px;
+}
+
+.contador .numero {
+    font-size: clamp(1.1rem, 5vw, 1.6rem);
+    font-weight: 700;
+    color: #ffffff;
+    text-shadow: 0 0 10px #00d2ff;
+}
+
+.contador small {
+    font-size: clamp(0.6rem, 2.5vw, 0.75rem);
+    color: #88d4ff;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-top: 2px;
+}
+
+/* ===== Botón "Leer mi carta" ===== */
+.contenedor-inferior {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 4vh;
+}
+
+.btn-carta {
+    padding: 12px 26px;
+    background: rgba(0, 210, 255, 0.08);
+    border: 2px solid #00d2ff;
+    color: #00d2ff;
+    border-radius: 30px;
+    font-size: clamp(0.9rem, 3.5vw, 1rem);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    text-shadow: 0 0 8px #00d2ff;
+    box-shadow: 0 0 16px rgba(0, 210, 255, 0.35);
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.btn-carta:active {
+    transform: scale(0.96);
+    background: rgba(0, 210, 255, 0.2);
+}
+
+/* ===== Carta de amor (modal) ===== */
+.carta-amor {
+    position: fixed;
+    inset: 0;
+    background: rgba(2, 2, 8, 0.92);
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 25px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s ease;
+}
+
+.carta-amor.visible {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.carta-contenido {
+    max-width: 480px;
+    width: 100%;
+    max-height: 80vh;
+    overflow-y: auto;
+    background: linear-gradient(160deg, rgba(0, 50, 80, 0.55), rgba(0, 10, 20, 0.85));
+    border: 1px solid rgba(0, 210, 255, 0.4);
+    border-radius: 18px;
+    padding: 30px 25px;
+    box-shadow: 0 0 35px rgba(0, 210, 255, 0.3);
+    text-align: left;
+}
+
+.carta-contenido h2 {
+    color: #00d2ff;
+    margin-bottom: 16px;
+    text-shadow: 0 0 10px #00d2ff;
+    font-size: clamp(1.1rem, 4.5vw, 1.4rem);
+}
+
+.carta-contenido p {
+    line-height: 1.7;
+    color: #dff6ff;
+    margin-bottom: 12px;
+    font-size: clamp(0.9rem, 3.5vw, 1rem);
+}
+
+.cerrar-carta {
+    display: block;
+    margin: 18px auto 0;
+    padding: 9px 22px;
+    background: transparent;
+    border: 1px solid #00d2ff;
+    color: #00d2ff;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
